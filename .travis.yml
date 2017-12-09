@@ -1,0 +1,10 @@
+dist: trusty
+sudo: false
+language: cpp
+notifications:
+  email: false
+
+script:
+  - mkdir build && cd build
+  - cmake ..
+  - cmake --build
