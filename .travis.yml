@@ -8,7 +8,7 @@ matrix:
   include:
     - env: CXX=g++
     - env: CXX=clang++
-      addons { apt: {packages: ["clang"], sources: ["ubuntu-toolchain-r-test", "llvm-toolchain-trusty"] } }
+      addons: { apt: {packages: ["clang"], sources: ["ubuntu-toolchain-r-test", "llvm-toolchain-trusty"] } }
 
 script:
   - cd hello-world
