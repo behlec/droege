@@ -5,6 +5,7 @@ notifications:
   email: false
 
 script:
+  - cd hello-world
   - mkdir build && cd build
   - cmake ..
   - cmake --build .
