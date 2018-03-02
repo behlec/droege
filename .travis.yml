@@ -1,18 +1,30 @@
 dist: trusty
-sudo: true
+sudo: required
 language: cpp
 notifications:
   email: false
 
 matrix:
   include:
-    - env: CXX=g++
-    - env: CXX=clang++
-      addons: { apt: {packages: ["clang"], sources: ["ubuntu-toolchain-r-test", "llvm-toolchain-trusty"] } }
+    - os: linux
+      env:
+        - MATRIX_EVAL="CXX=g++"
+
+    - os: linux
+      addons:
+        apt:
+          sources: 
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env:
+        - MATRIX_EVAL="CXX=g++-7"
+
+before_install:
+  - eval "${MATRIX_EVAL}"
 
 script:
   - cd hello-world
   - mkdir build && cd build
-  - cmake ..
+  - CXX=${CXX} cmake ..
   - cmake --build .
-  - ./hello
