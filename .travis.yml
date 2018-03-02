@@ -9,7 +9,6 @@ matrix:
     - os: linux
       env:
         - MATRIX_EVAL="CXX=g++"
-
     - os: linux
       addons:
         apt:
@@ -19,6 +18,9 @@ matrix:
             - g++-7
       env:
         - MATRIX_EVAL="CXX=g++-7"
+    - os: linux
+      env:
+        - MATRIX_EVAL="CXX=clang++"
 
 before_install:
   - eval "${MATRIX_EVAL}"
